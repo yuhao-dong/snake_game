@@ -1,7 +1,10 @@
 let lastRenderTime = 0;
-let SPEED = 5; // times the snake move per second
+let speed = 2; // times the snake move per second
 const gameBoard = document.getElementById("gameBoard");
 let isGameOver = false;
+
+let level = 1;
+let score = 0;
 
 function main(currentTime){
     if(isGameOver){
@@ -15,7 +18,7 @@ function main(currentTime){
     // it changes approximately every 0.06 seconds
     const secondsSinceLastRender = (currentTime - lastRenderTime) / 1000; // to seconds
     
-    if(secondsSinceLastRender < 1 / SPEED){
+    if(secondsSinceLastRender < 1 / speed){
         return;
     }
 
@@ -100,11 +103,41 @@ function addSegments(){
 
 //------------------------------------------------------------------------
 let food = getRandomFoodPosition();
-let expansion_rate = 5; // how much the snake is grawing
+let expansion_rate = 1; // how much the snake is grawing
+
+let printScore = document.getElementById("score");
+let printLevel = document.getElementById("level");
 
 // for food
 function updateFood(){
     if(onSnake(food)){
+        score += 100;
+        if(score < 1000)
+            printScore.innerText = `00${score}`;
+        else if(score < 10000)
+            printScore.innerText = `0${score}`;
+
+        if(score === 800){
+            level = 2;
+            speed = 4;
+            printLevel.innerText = level;
+        }
+        else if(score === 1500){
+            level = 3;
+            speed = 6;
+            printLevel.innerText = level;
+        }
+        else if(score === 3000){
+            level = 4;
+            speed = 8;
+            printLevel.innerText = level;
+        }
+        else if(score === 6000){
+            level = 5;
+            speed = 10;
+            printLevel.innerText = level;
+        }
+
         expandSnake(expansion_rate);
         food = getRandomFoodPosition();
     }

@@ -2,10 +2,19 @@ body{
     height: 100vh;
     width: 100vw;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     margin: 0;
     background-color: burlywood;
+    text-align: center;
+}
+
+#info{
+    width: 70vmin;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
 }
 
 #gameBoard{
@@ -27,9 +36,31 @@ body{
     border: 0.25vmin solid black;
 }
 
+@media (min-width:800px){
+    p{
+        font-size: 25px;
+    }
+    h1{
+        font-size: 45px;
+    }
+}
+
 @media (max-width:800px){
     #gameBoard{
         width: 90vmin;
         height: 90vmin;
+    }
+}
+
+@media (max-width:476px){
+    #info{
+        width: 70vmin;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    p{
+        margin: 0;
+        padding: 0;
     }
 }
