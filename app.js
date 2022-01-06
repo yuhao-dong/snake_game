@@ -25,7 +25,9 @@ function main(currentTime){
     lastRenderTime = currentTime;
 
     update();
-    draw();
+    if(!isGameOver){
+        draw();
+    }
 }
 
 // start the loop
