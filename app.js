@@ -252,25 +252,25 @@ function handleTouchMove(evt) {
                                                                          
     if ( Math.abs( xDiff ) > Math.abs( yDiff ) ) {/*most significant*/
         if ( xDiff > 0 ) {
-            if(!previousSwipe === "horizontal"){
-                inputDirection = {x:1, y:0};
+            if(previousSwipe !== "horizontal"){
+                inputDirection = {x:-1, y:0};
                 previousSwipe = "horizontal";
             }
         } else {
-            if(!previousSwipe === "horizontal"){
-                inputDirection = {x:-1, y:0};
+            if(previousSwipe !== "horizontal"){
+                inputDirection = {x:1, y:0};
                 previousSwipe = "horizontal";
             }
         }                       
     } else {
         if ( yDiff > 0 ) {
-            if(!previousSwipe === "vertical"){
-                inputDirection = {x:0, y:1};
+            if(previousSwipe !== "vertical"){
+                inputDirection = {x:0, y:-1};
                 previousSwipe = "vertical";
             }
         } else { 
-            if(!previousSwipe === "vertical"){
-                inputDirection = {x:0, y:-1};
+            if(previousSwipe !== "vertical"){
+                inputDirection = {x:0, y:1};
                 previousSwipe = "vertical";
             }
         }                                                                 
