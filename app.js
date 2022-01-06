@@ -9,7 +9,7 @@ let score = 0;
 function main(currentTime){
     if(isGameOver){
         if(confirm("Game Over. Press ok to restart!")){
-            window.location = '/'; // refresh the page -- restart the game
+            window.location = '/snake_game/'; // refresh the page -- restart the game
         }
         return;
     }
