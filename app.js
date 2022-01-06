@@ -218,3 +218,64 @@ function getSnakeHead(){
 function snakeIntersection(){
     return onSnake(snakeBody[0], {ignoreHead: true});
 }
+
+//------------------------------------------------------------------------
+// Mobile swipe
+gameBoard.addEventListener("touchstart", handleTouchStart, false);
+gameBoard.addEventListener('touchmove', handleTouchMove, false);
+
+let xDown = null;                                                        
+let yDown = null;
+
+function getTouches(evt) {
+    return evt.touches
+}  
+
+function handleTouchStart(evt) {
+    const firstTouch = getTouches(evt)[0];                                      
+    xDown = firstTouch.clientX;                                      
+    yDown = firstTouch.clientY;                                      
+};
+
+let previousSwipe = "";
+
+function handleTouchMove(evt) {
+    if ( ! xDown || ! yDown ) {
+        return;
+    }
+
+    let xUp = evt.touches[0].clientX;                                    
+    let yUp = evt.touches[0].clientY;
+
+    let xDiff = xDown - xUp;
+    let yDiff = yDown - yUp;
+                                                                         
+    if ( Math.abs( xDiff ) > Math.abs( yDiff ) ) {/*most significant*/
+        if ( xDiff > 0 ) {
+            if(!previousSwipe === "horizontal"){
+                inputDirection = {x:1, y:0};
+                previousSwipe = "horizontal";
+            }
+        } else {
+            if(!previousSwipe === "horizontal"){
+                inputDirection = {x:-1, y:0};
+                previousSwipe = "horizontal";
+            }
+        }                       
+    } else {
+        if ( yDiff > 0 ) {
+            if(!previousSwipe === "vertical"){
+                inputDirection = {x:0, y:1};
+                previousSwipe = "vertical";
+            }
+        } else { 
+            if(!previousSwipe === "vertical"){
+                inputDirection = {x:0, y:-1};
+                previousSwipe = "vertical";
+            }
+        }                                                                 
+    }
+    /* reset values */
+    xDown = null;
+    yDown = null;                                             
+};
