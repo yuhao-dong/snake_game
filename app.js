@@ -221,8 +221,8 @@ function snakeIntersection(){
 
 //------------------------------------------------------------------------
 // Mobile swipe
-gameBoard.addEventListener("touchstart", handleTouchStart, false);
-gameBoard.addEventListener('touchmove', handleTouchMove, false);
+gameBoard.addEventListener("touchstart", handleTouchStart);
+gameBoard.addEventListener('touchmove', handleTouchMove);
 
 let xDown = null;                                                        
 let yDown = null;
