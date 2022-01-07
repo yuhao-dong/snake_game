@@ -29,6 +29,7 @@ body{
     display: grid;
     grid-template-rows: repeat(21, 1fr);
     grid-template-columns: repeat(21, 1fr);
+    touch-action: none;
 }
 
 .snake{
